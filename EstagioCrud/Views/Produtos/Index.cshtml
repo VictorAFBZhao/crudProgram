@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EstagioCrud.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Produtos</h1>
+
+<p>
+   <button class="btn btn-sm btn-warning"> <a style="text-decoration:none; color:white" asp-action="Create">Adicionar Novo Produto</a></button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>s
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                <button class="btn btn-dark"><a style="text-decoration:none; color:white" asp-action="Edit" asp-route-id="@item.Id">Edit</a></button> |
+                <button class="btn btn-dark"><a style="text-decoration:none; color:white" asp-action="Details" asp-route-id="@item.Id">Details</a></button> |
+                <button class="btn btn-danger"><a style="text-decoration:none; color:white" asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
